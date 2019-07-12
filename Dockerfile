@@ -12,4 +12,4 @@ FROM build as chronyd
 RUN apk --no-cache add chrony
 COPY --from=webproc /usr/local/bin/webproc /usr/local/bin/webproc
 COPY chrony.conf /etc/chrony/chrony.conf
-ENTRYPOINT ["webproc","--on-exit","restart","--config","/etc/chrony/chrony.conf","--","chronyd","-d"]
+ENTRYPOINT ["webproc","--on-exit","restart","--config","/etc/chrony/chrony.conf,/etc/chrony.keys","--","chronyd","-d"]
