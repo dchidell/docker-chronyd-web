@@ -12,5 +12,5 @@ FROM build as chronyd
 RUN apk --no-cache add chrony
 COPY --from=webproc /usr/local/bin/webproc /usr/local/bin/webproc
 COPY chrony.conf /etc/chrony/chrony.conf
-ENTRYPOINT ["webproc","--on-exit","restart","-c","/etc/chrony/chrony.conf,/etc/chrony.keys","--","chronyd","-d"]
+ENTRYPOINT ["webproc","--on-exit","restart","-c","/etc/chrony/chrony.conf","/etc/chrony.keys","--","chronyd","-d"]
 EXPOSE 123/udp 8080
